@@ -217,7 +217,7 @@ header {
     font-size: 1.1rem;
 }
 .differentiators-text ul li::before {
-    content: '✔'; /* Ou use uma imagem de ícone */
+    content: ''; /* Ou use uma imagem de ícone */
     color: var(--color-primary-pink);
     position: absolute;
     left: 0;
