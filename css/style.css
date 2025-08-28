@@ -40,16 +40,17 @@ body {
 h1, h2, h3 {
     font-family: 'Poppins', sans-serif; /* Fonte sugerida para títulos */
     color: var(--color-primary-green);
-    margin-bottom: 20px;
+    line-height: 120%;
+    padding-bottom: 16px;
 }
 
-h2 {
-    font-size: 2.5rem;
+h1, h2 {
+    font-weight: bold;
+    font-size: 38px;
 }
 
 h3 {
-    font-size: 1.5rem;
-    color: var(--color-text-dark);
+    font-size: 28px;
 }
 
 p {
@@ -98,13 +99,6 @@ a {
 /* =================================================== */
 
 /* --- Cabeçalho --- */
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .main-header .logo {
     font-size: 2.5rem;
     color: var(--color-primary-pink);
@@ -113,42 +107,70 @@ header {
 }
 .main-header .logo h1 span { 
     color: var(--color-primary-green);
+    font-size: 46px;
     margin-top: 60px;
 }
 .logo img {
-    width: 70%;
+    width: 50%;
+    padding-top: 8%;
 }
 
 /* --- Seção Hero --- */
 .hero {
-    background-color: var(--color-background-light-pink);
-    padding-bottom: 40px;
+    background: #F0ECEC;
+    /* background-color: ##fef6f8; */
+    /* Imagem de fundo com as patinhas */
+    background-image: url('../img/patinhas.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center; 
 }
-.hero img { /* A imagem do cachorro */
-    max-width: 80%;
+.hero .container{
+    width: 100%;
+    height: 100vh;
 }
-.hero .hero-text-box {
-    border: 4px dashed var(--color-primary-pink);
-    border-radius: 15px;
-    padding: 20px;
-    max-width: 740px;
-    background-color: rgba(255, 255, 255, 0.6);
-}
-.hero .hero-text-box h2 {
-    color: var(--color-primary-pink);
-    font-size: 1.8rem;
+.hero .hero-puppy-image {
+    margin-top: 40px;
+    margin-bottom: -70px; /* Puxa a imagem para baixo, sobre a caixa */
+    width: 100%;
+    max-width: 400px;
+    /* Posicionamento para sobrepor a caixa de texto */
+    position: relative;
+    z-index: 2;
 }
 .hero-text{
     color: #FE5668;
     font-weight: bold;
 }
-.caixa-branca {
-   border-radius: 16px;
-   padding: 30px;
-   background: #fff;
-   box-shadow: 7px 9px 22.4px 0 rgba(0, 0, 0, 0.25);
-   margin-top: -80px;
+.hero .caixa-branca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
+.caixa-branca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 840px;
+    padding: 30px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 4px 4px 4px  0 rgba(0, 0, 0, 0.07);
+    position: relative;
+    z-index: 1;
+}
+.hero .hero-text-box {
+    border: 4px dashed var(--color-primary-pink);
+    border-radius: 16px;
+    padding: 40px 20px 20px 20px; /* Mais padding no topo para o cachorro não cobrir o texto */
+    max-width: 740px;
+}
+.hero .hero-text-box h2 {
+    color: var(--color-primary-pink);
+    font-size: 1.8rem;
+}
+
 
 /* --- Quem Somos --- */
 .sobre-nos .container {
@@ -158,8 +180,13 @@ header {
     text-align: left;
 }
 .sobre-nos{
-    background: linear-gradient(180deg, #fef6f8 0%,  #EFF7E1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(180deg, transparent, #EFF8DF 100%);
 }
 .sobre-nos-image {
     flex: 1;
@@ -179,11 +206,12 @@ header {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom center;
+    opacity: ;
 }
 .steps-container {
     display: flex;
     justify-content: space-around;
-    gap: 30px;
+    gap: 40px;
     margin: 40px 0;
 }
 .step-card {
@@ -240,22 +268,29 @@ header {
     
 }
 
-
 /* --- Depoimentos --- */
 .testimonials {
     background-color: var(--color-neutral);
+    padding: 60px 0;
 }
-.testimonials-grid {
-    display: flex;
-    gap: 30px;
-    margin-top: 40px;
+.testimonials-slider {
+    width: 100%;
+    padding-bottom: 50px; /* Espaço para a paginação */
+}
+.swiper-slide {
+    /* O Swiper cuida do alinhamento, não precisamos de flex aqui */
+    background: transparent;
 }
 .testimonial-card {
-    flex: 1;
     padding: 30px;
     border: 1px solid var(--color-border);
     border-radius: 15px;
     background-color: #fdfdfd;
+    height: 100%; /* Garante que os cards tenham a mesma altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 .testimonial-card .rating {
     color: #ffd700; /* Cor de estrela */
@@ -267,9 +302,36 @@ header {
     color: var(--color-text-dark);
 }
 
+/* Estilos da Paginação do Swiper */
+.swiper-pagination {
+    margin-top: 60px !important;
+    position: relative !important;
+}
+.swiper-pagination-bullet {
+    background-color: #ccc;
+    opacity: 1;
+}
+.swiper-pagination-bullet-active {
+    background-color: var(--color-primary-green);
+}
+
+
+/* --- Gradiente --- */
+.gradiente {    
+    background: #F0ECEC;
+    /* background-color: ##fef6f8; */
+    /* Imagem de fundo com as patinhas */
+    background-image: url('../img/patinhas.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
 /* --- Cadastro (Primeiros Usuários) --- */
 .early-access {
-    background: linear-gradient(180deg, #EFF7E1 0%, #fef6f8 100%);
+    background: linear-gradient(180deg, #EFF7E1 0%, transparent);
+    width: 100%;
+    height: 70vh;
 }
 .signup-container {
     display: flex;
@@ -303,7 +365,9 @@ header {
 
 /* --- Vantagens --- */
 .benefits {
-    background-color: var(--color-background-light-pink);
+    /* background-color: var(--color-background-light-pink); */
+    width: 100%;
+    height: 50vh;
 }
 .benefits ul {
     margin: 30px auto;
@@ -342,29 +406,86 @@ header {
 /* =================================================== */
 
 @media (max-width: 768px) {
-    h2 {
-        font-size: 2rem;
+    h1, h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    .container {
+        padding: 20px 15px;
     }
 
-    /* --- Colunas que viram linhas --- */
-    .about-us .container,
+    .main-header .logo img {
+        width: 70%;
+    }
+
+    .hero .container {
+        height: auto;
+        padding-bottom: 40px;
+    }
+    .hero .hero-puppy-image {
+        margin-top: 20px;
+        margin-bottom: -40px;
+        width: 70%;
+        max-width: 250px;
+    }
+    .caixa-branca {
+        width: 95%;
+        padding: 15px;
+    }
+    .hero .hero-text-box {
+        padding: 40px 10px 10px 10px;
+    }
+    .hero .hero-text-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .sobre-nos {
+        height: auto;
+        padding: 40px 0;
+    }
+    .sobre-nos .container,
     .differentiators .container {
         flex-direction: column;
+        text-align: center;
     }
-
-    .about-us .container,
-    .differentiators .container {
+    .sobre-nos-text,
+    .differentiators-text {
         text-align: center;
     }
 
-    .about-us-text,
-    .differentiators-text {
-        text-align: left; /* Mantém listas alinhadas à esquerda */
+    .comoFunciona {
+        background-size: 150%;
     }
-
     .steps-container,
     .testimonials-grid,
     .signup-container {
         flex-direction: column;
+    }
+
+    .differentiators-text ul {
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .testimonials {
+        padding: 40px 0;
+    }
+
+    .early-access, .benefits {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .main-footer {
+        text-align: center;
+        justify-content: center;
+    }
+    .main-footer .logo-footer {
+        margin-bottom: 20px;
+    }
+    .footer-social, .footer-links {
+        margin-bottom: 20px;
     }
 }
