@@ -9,7 +9,7 @@ Este repositório contém o código-fonte completo para a landing page da AllePe
 
 *Insira aqui um screenshot da sua landing page. É uma ótima forma de mostrar o resultado final!*
 
-![Screenshot da Landing Page AllePets](images/screenshot-allepets.png)
+![Screenshot da Landing Page AllePets](img/lp-allepets.png)
 
 ---
 
